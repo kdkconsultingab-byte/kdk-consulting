@@ -9,7 +9,10 @@ export default function Home() {
   return (
     <main>
       <nav className="nav" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="KDK Consulting home">KDK</a>
+        <a className="brand" href="#top" aria-label="KDK Consulting home">
+          <img src="/kdk-logo.png" alt="KDK Consulting" />
+          <span>KDK Consulting</span>
+        </a>
         <a className="nav-link" href="#contact">Contact</a>
       </nav>
 

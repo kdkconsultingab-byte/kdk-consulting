@@ -8,7 +8,7 @@
     <style>
       :root { color: #173f3a; background: #f7f5f0; font-family: Arial, Helvetica, sans-serif; }
       * { box-sizing: border-box; } body { margin: 0; } .wrap { max-width: 1160px; margin: auto; padding: 28px 30px; }
-      nav { display: flex; justify-content: space-between; font-weight: 800; letter-spacing: .08em; } nav a { color: inherit; text-decoration: none; }
+      nav { display: flex; justify-content: space-between; font-weight: 800; letter-spacing: .08em; } nav a { color: inherit; text-decoration: none; } .brand{align-items:center;display:inline-flex;gap:10px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}.brand img{border-radius:50%;display:block;height:34px;object-fit:cover;width:34px}
       header { min-height: 590px; padding: 112px 30px; background: linear-gradient(125deg,#e6eee8 0%,#f7f5f0 58%,#e7d9c8 100%); }
       header .wrap { padding: 0; } .eyebrow { color: #806346; font-size: .72rem; font-weight: 800; letter-spacing: .13em; }
       h1 { font-size: clamp(3.4rem,7vw,6.4rem); letter-spacing: -.075em; line-height: .93; max-width: 760px; margin: 25px 0; }
@@ -23,7 +23,7 @@
     </style>
   </head>
   <body>
-    <nav class="wrap"><a href="#top">KDK</a><a href="#contact">CONTACT</a></nav>
+    <nav class="wrap"><a class="brand" href="#top" aria-label="KDK Consulting home"><img src="kdk-logo.png" alt="KDK Consulting" /><span>KDK Consulting</span></a><a href="#contact">CONTACT</a></nav>
     <header id="top"><div class="wrap"><div class="eyebrow">KDK CONSULTING AB · GOTHENBURG, SWEDEN</div><h1>Practical digital products, built with care.</h1><p>KDK Consulting AB is a Swedish technology company building useful software products and helping businesses with digital product and technology consulting.</p><a class="button" href="#contact">Get in touch</a></div></header>
     <section><div class="wrap"><div class="eyebrow">WHAT WE DO</div><h2>From idea to dependable product.</h2><div class="grid"><article><span>01</span><h3>Product development</h3><p>We create focused digital products that solve everyday problems.</p></article><article><span>02</span><h3>Software &amp; AI</h3><p>We use modern software and AI thoughtfully, where it creates real value.</p></article><article><span>03</span><h3>Long-term thinking</h3><p>We favour clear, maintainable solutions and relationships built to last.</p></article></div></div></section>
     <section id="contact"><div class="wrap"><div class="eyebrow">CONTACT</div><h2>Let&apos;s talk.</h2><p>For company information or product enquiries, contact us by email.</p><p><a class="email" href="mailto:info@kdkconsulting.se">info@kdkconsulting.se</a></p><p>Gothenburg, Sweden</p></div></section>
