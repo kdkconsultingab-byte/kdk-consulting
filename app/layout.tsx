@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "KDK Consulting AB",
-  description: "Practical digital products, built with care.",
+  description:
+    "Public company website for KDK Consulting AB, a Swedish technology and product consulting company based in Gothenburg.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
