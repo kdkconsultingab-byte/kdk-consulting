@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "KDK Consulting AB",
@@ -40,19 +41,19 @@ export default function Home() {
       </nav>
 
       <section id="top" className="hero">
-        <p className="eyebrow">KDK CONSULTING AB - GOTHENBURG, SWEDEN</p>
-        <h1>KDK Consulting AB</h1>
-        <p className="intro">
+        <p className="eyebrow hero-eyebrow">KDK CONSULTING AB - GOTHENBURG, SWEDEN</p>
+        <h1 className="hero-headline">KDK Consulting AB</h1>
+        <p className="intro hero-copy">
           A Swedish technology and product consulting company building practical
           software, AI-supported tools, and digital products.
         </p>
-        <div className="hero-actions">
+        <div className="hero-actions hero-cta">
           <a className="button" href="#contact">Contact KDK</a>
           <a className="text-link" href="#work">View services</a>
         </div>
       </section>
 
-      <section id="company" className="company" aria-labelledby="company-heading">
+      <section id="company" className="company reveal" aria-labelledby="company-heading">
         <div>
           <p className="eyebrow">COMPANY</p>
           <h2 id="company-heading">Organization information</h2>
@@ -63,33 +64,33 @@ export default function Home() {
           </p>
         </div>
         <dl className="facts" aria-label="Company facts">
-          <div>
+          <div className="reveal-item">
             <dt>Company name</dt>
             <dd>KDK Consulting AB</dd>
           </div>
-          <div>
+          <div className="reveal-item">
             <dt>Website</dt>
             <dd>kdkconsulting.se</dd>
           </div>
-          <div>
+          <div className="reveal-item">
             <dt>Email</dt>
             <dd>
               <a href="mailto:info@kdkconsulting.se">info@kdkconsulting.se</a>
             </dd>
           </div>
-          <div>
+          <div className="reveal-item">
             <dt>Location</dt>
             <dd>Gothenburg, Sweden</dd>
           </div>
         </dl>
       </section>
 
-      <section id="work" className="services" aria-labelledby="what-we-do">
+      <section id="work" className="services reveal" aria-labelledby="what-we-do">
         <p className="eyebrow">SERVICES</p>
         <h2 id="what-we-do">Technology consulting and product development.</h2>
         <div className="service-grid">
           {services.map((service) => (
-            <article key={service.label}>
+            <article className="service-card reveal-item" key={service.label}>
               <span>{service.label}</span>
               <h3>{service.title}</h3>
               <p>{service.body}</p>
@@ -98,19 +99,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="product" aria-labelledby="product-heading">
+      <section className="product reveal" aria-labelledby="product-heading">
         <div>
-          <p className="eyebrow">PRODUCT</p>
-          <h2 id="product-heading">CookSmart</h2>
+          <p className="eyebrow">PRODUCTS</p>
+          <h2 id="product-heading">Software products and AI-assisted tools.</h2>
         </div>
         <p>
-          CookSmart is a mobile app project from KDK Consulting AB. The app helps
-          people turn available ingredients into practical meal ideas and is
-          currently being prepared for Apple TestFlight.
+          KDK Consulting AB develops mobile applications, software products,
+          AI-assisted tools, and digital products for practical everyday use.
         </p>
       </section>
 
-      <section id="contact" className="contact" aria-labelledby="contact-heading">
+      <section id="contact" className="contact reveal" aria-labelledby="contact-heading">
         <p className="eyebrow">CONTACT</p>
         <h2 id="contact-heading">Contact KDK Consulting AB</h2>
         <p>
@@ -122,6 +122,34 @@ export default function Home() {
       </section>
 
       <footer>© {new Date().getFullYear()} KDK Consulting AB</footer>
+      <Script id="site-motion" strategy="afterInteractive">
+        {`
+          const root = document.documentElement;
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!reduceMotion) {
+            root.classList.add('motion-ready');
+          }
+
+          const nav = document.querySelector('.nav');
+          const updateNav = () => {
+            nav?.classList.toggle('is-scrolled', window.scrollY > 12);
+          };
+          updateNav();
+          window.addEventListener('scroll', updateNav, { passive: true });
+
+          if (!reduceMotion && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  currentObserver.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.18 });
+            document.querySelectorAll('.reveal, .reveal-item').forEach((element) => observer.observe(element));
+          }
+        `}
+      </Script>
     </main>
   );
 }

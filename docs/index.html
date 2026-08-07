@@ -22,9 +22,21 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
+        left: 0;
         margin: auto;
-        max-width: 1160px;
-        padding: 24px 30px;
+        max-width: none;
+        padding: 24px max(30px, calc((100vw - 1160px) / 2 + 30px));
+        position: sticky;
+        right: 0;
+        top: 0;
+        transition: background-color 250ms ease, border-color 250ms ease, backdrop-filter 250ms ease, box-shadow 250ms ease;
+        z-index: 10;
+      }
+      nav.is-scrolled {
+        background: rgb(248 246 241 / 88%);
+        border-bottom: 1px solid rgb(23 63 58 / 15%);
+        box-shadow: 0 10px 30px rgb(23 63 58 / 8%);
+        backdrop-filter: blur(16px);
       }
       .brand {
         align-items: center;
@@ -45,7 +57,8 @@
       .nav-actions { align-items: center; display: flex; gap: 22px; }
       .nav-actions a { font-size: .9rem; font-weight: 700; text-decoration: none; }
       header {
-        background: #eef2ec;
+        background: linear-gradient(125deg, #e6eee8 0%, #f8f6f1 58%, #e7d9c8 100%);
+        background-size: 115% 115%;
         border-top: 1px solid var(--line);
         min-height: 560px;
         padding: 108px 30px 96px;
@@ -94,6 +107,13 @@
         font-weight: 700;
         padding: 15px 22px;
         text-decoration: none;
+        box-shadow: 0 5px 12px rgb(23 63 58 / 12%);
+        transition: transform 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+      }
+      .button:hover, .button:focus-visible {
+        background: #10342f;
+        box-shadow: 0 12px 22px rgb(23 63 58 / 23%);
+        transform: translateY(-3px);
       }
       .company {
         display: grid;
@@ -122,6 +142,12 @@
         border-right: 1px solid #c7d1c9;
         min-height: 245px;
         padding: 26px 28px 20px 0;
+        transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+      }
+      .service-grid article:hover {
+        border-color: rgb(23 63 58 / 28%);
+        box-shadow: 0 14px 34px rgb(23 63 58 / 10%);
+        transform: translateY(-5px);
       }
       .service-grid article + article { padding-left: 28px; }
       .service-grid article:last-child { border-right: 0; }
@@ -160,6 +186,60 @@
         font-size: .8rem;
         padding: 24px 30px;
       }
+      .hero-eyebrow, .hero-headline, .hero-copy, .hero-cta {
+        animation-fill-mode: both;
+        animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+      }
+      nav { animation: nav-in 500ms cubic-bezier(.22, 1, .36, 1) both; }
+      .hero-headline { animation: headline-in 750ms cubic-bezier(.22, 1, .36, 1) both; }
+      .hero-copy { animation: copy-in 650ms cubic-bezier(.22, 1, .36, 1) 140ms both; }
+      .hero-cta { animation: cta-in 550ms cubic-bezier(.22, 1, .36, 1) 280ms both; }
+      .motion-ready header { animation: gradient-drift 22s ease-in-out infinite alternate; }
+      .motion-ready .reveal, .motion-ready .reveal-item {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 700ms cubic-bezier(.22, 1, .36, 1), transform 700ms cubic-bezier(.22, 1, .36, 1);
+      }
+      .motion-ready .reveal.is-visible, .motion-ready .reveal-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .motion-ready .service-card.reveal-item.is-visible:hover { transform: translateY(-5px); }
+      .motion-ready .service-card.reveal-item:nth-child(2) { transition-delay: 110ms; }
+      .motion-ready .service-card.reveal-item:nth-child(3) { transition-delay: 220ms; }
+      .motion-ready .facts .reveal-item:nth-child(2) { transition-delay: 110ms; }
+      .motion-ready .facts .reveal-item:nth-child(3) { transition-delay: 220ms; }
+      .motion-ready .facts .reveal-item:nth-child(4) { transition-delay: 330ms; }
+      @keyframes nav-in {
+        from { opacity: 0; transform: translateY(-16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes headline-in {
+        from { opacity: 0; transform: translateY(45px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes copy-in {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes cta-in {
+        from { opacity: 0; transform: translateY(20px) scale(.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes gradient-drift {
+        from { background-position: 42% 45%; }
+        to { background-position: 57% 55%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .01ms !important;
+        }
+        .reveal, .reveal-item { opacity: 1 !important; transform: none !important; }
+        nav, .hero-eyebrow, .hero-headline, .hero-copy, .hero-cta, header { animation: none !important; }
+      }
       @media (max-width: 720px) {
         nav { padding: 20px 24px; }
         .nav-actions { gap: 14px; }
@@ -184,6 +264,11 @@
         .email { font-size: 1.38rem; }
       }
     </style>
+    <script>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion-ready');
+      }
+    </script>
   </head>
   <body>
     <nav>
@@ -199,45 +284,45 @@
 
     <header id="top">
       <div>
-        <p class="eyebrow">KDK Consulting AB - Gothenburg, Sweden</p>
-        <h1>KDK Consulting AB</h1>
-        <p class="intro">A Swedish technology and product consulting company building practical software, AI-supported tools, and digital products.</p>
-        <div class="hero-actions">
+        <p class="eyebrow hero-eyebrow">KDK Consulting AB - Gothenburg, Sweden</p>
+        <h1 class="hero-headline">KDK Consulting AB</h1>
+        <p class="intro hero-copy">A Swedish technology and product consulting company building practical software, AI-supported tools, and digital products.</p>
+        <div class="hero-actions hero-cta">
           <a class="button" href="#contact">Contact KDK</a>
           <a href="#work">View services</a>
         </div>
       </div>
     </header>
 
-    <section id="company" class="company" aria-labelledby="company-heading">
+    <section id="company" class="company reveal" aria-labelledby="company-heading">
       <div>
         <p class="eyebrow">Company</p>
         <h2 id="company-heading">Organization information</h2>
         <p>KDK Consulting AB operates from Gothenburg, Sweden. This website, kdkconsulting.se, is the public company website for business contact, product information, and organization verification.</p>
       </div>
       <dl class="facts" aria-label="Company facts">
-        <div><dt>Company name</dt><dd>KDK Consulting AB</dd></div>
-        <div><dt>Website</dt><dd>kdkconsulting.se</dd></div>
-        <div><dt>Email</dt><dd><a href="mailto:info@kdkconsulting.se">info@kdkconsulting.se</a></dd></div>
-        <div><dt>Location</dt><dd>Gothenburg, Sweden</dd></div>
+        <div class="reveal-item"><dt>Company name</dt><dd>KDK Consulting AB</dd></div>
+        <div class="reveal-item"><dt>Website</dt><dd>kdkconsulting.se</dd></div>
+        <div class="reveal-item"><dt>Email</dt><dd><a href="mailto:info@kdkconsulting.se">info@kdkconsulting.se</a></dd></div>
+        <div class="reveal-item"><dt>Location</dt><dd>Gothenburg, Sweden</dd></div>
       </dl>
     </section>
 
-    <section id="work" class="services" aria-labelledby="services-heading">
+    <section id="work" class="services reveal" aria-labelledby="services-heading">
       <p class="eyebrow">Services</p>
       <h2 id="services-heading">Technology consulting and product development.</h2>
       <div class="service-grid">
-        <article>
+        <article class="service-card reveal-item">
           <span>01</span>
           <h3>Digital product development</h3>
           <p>Focused web and mobile products from early idea to a working release.</p>
         </article>
-        <article>
+        <article class="service-card reveal-item">
           <span>02</span>
           <h3>Software and AI prototypes</h3>
           <p>Practical technical prototypes that test real customer value before larger investment.</p>
         </article>
-        <article>
+        <article class="service-card reveal-item">
           <span>03</span>
           <h3>Product and project support</h3>
           <p>Clear planning, delivery support, and technical coordination for small teams.</p>
@@ -245,15 +330,15 @@
       </div>
     </section>
 
-    <section class="product" aria-labelledby="product-heading">
+    <section class="product reveal" aria-labelledby="product-heading">
       <div>
-        <p class="eyebrow">Product</p>
-        <h2 id="product-heading">CookSmart</h2>
+        <p class="eyebrow">Products</p>
+        <h2 id="product-heading">Software products and AI-assisted tools.</h2>
       </div>
-      <p>CookSmart is a mobile app project from KDK Consulting AB. The app helps people turn available ingredients into practical meal ideas and is currently being prepared for Apple TestFlight.</p>
+      <p>KDK Consulting AB develops mobile applications, software products, AI-assisted tools, and digital products for practical everyday use.</p>
     </section>
 
-    <section id="contact" aria-labelledby="contact-heading">
+    <section id="contact" class="reveal" aria-labelledby="contact-heading">
       <div>
         <p class="eyebrow">Contact</p>
         <h2 id="contact-heading">Contact KDK Consulting AB</h2>
@@ -266,5 +351,24 @@
     <footer>
       <div>© 2026 KDK Consulting AB · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></div>
     </footer>
+    <script>
+      const nav = document.querySelector('nav');
+      const updateNav = () => nav.classList.toggle('is-scrolled', window.scrollY > 12);
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18 });
+        document.querySelectorAll('.reveal, .reveal-item').forEach((element) => observer.observe(element));
+      }
+    </script>
   </body>
 </html>

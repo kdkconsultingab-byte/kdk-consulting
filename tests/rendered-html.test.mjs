@@ -37,7 +37,9 @@ test("server-renders the KDK Consulting company site", async () => {
   assert.match(html, /KDK Consulting AB/);
   assert.match(html, /info@kdkconsulting\.se/);
   assert.match(html, /Gothenburg, Sweden/);
-  assert.match(html, /CookSmart/);
+  assert.doesNotMatch(html, /CookSmart/);
+  assert.match(html, /mobile applications/);
+  assert.match(html, /AI-assisted tools/);
   assert.match(html, /Technology consulting and product development/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/);
 });
