@@ -52,14 +52,14 @@ h1 { font-size: 5.6rem; line-height: .98; margin-bottom: 28px; max-width: 1120px
 .services { padding: 84px 30px 96px; }
 h2 { font-size: 3.4rem; line-height: 1.04; margin-bottom: 46px; max-width: 760px; }
 .service-grid { border-top: 1px solid #c7d1c9; display: grid; grid-template-columns: repeat(3, 1fr); }
-.service-grid article { border-right: 1px solid #c7d1c9; min-height: 245px; padding: 26px 28px 20px 0; transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+.service-grid article { border-right: 1px solid #c7d1c9; min-height: 245px; padding: 26px 28px 20px; transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
 .service-grid article:hover { border-color: rgb(23 63 58 / 28%); box-shadow: 0 14px 34px rgb(23 63 58 / 10%); transform: translateY(-5px); }
-.service-grid article + article { padding-left: 28px; }
 .service-grid article:last-child { border-right: 0; }
 .service-grid span { color: var(--accent); font-size: .78rem; font-weight: 800; }
 h3 { font-size: 1.32rem; margin: 57px 0 13px; }
 .service-grid p, .contact p { color: var(--muted); font-size: 1rem; line-height: 1.55; }
 .product { border-top: 1px solid var(--line); display: grid; gap: 52px; grid-template-columns: 1fr 1fr; padding: 86px 30px 96px; }
+.product > p { align-self: center; }
 .contact { margin-top: 0; padding: 100px 30px 112px; background: #173f3a; color: #f7f5f0; max-width: none; }
 .contact > * { max-width: 1160px; margin-left: auto; margin-right: auto; }
 .contact .eyebrow { color: #e7c39e; }
@@ -132,9 +132,10 @@ footer { max-width: none; background: #173f3a; border-top: 1px solid #58726c; co
   .facts div { grid-template-columns: 1fr; gap: 6px; }
   .services { padding: 68px 24px 76px; }
   .service-grid { grid-template-columns: 1fr; }
-  .service-grid article, .service-grid article + article { border-bottom: 1px solid #c7d1c9; border-right: 0; min-height: 180px; padding: 24px 0; }
+  .service-grid article { border-bottom: 1px solid #c7d1c9; border-right: 0; min-height: 180px; padding: 24px 0; }
   .service-grid article:last-child { border-bottom: 0; }
   h3 { margin-top: 28px; }
+  .product > p { align-self: start; }
   .contact { padding: 76px 24px 88px; }
   .email { font-size: 1.38rem; }
 }
