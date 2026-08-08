@@ -41,6 +41,7 @@ test("server-renders the KDK Consulting company site", async () => {
   assert.match(html, /mobile applications/);
   assert.match(html, /AI-assisted tools/);
   assert.match(html, /Technology consulting and product development/);
+  assert.match(html, /motion-enhanced/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/);
 });
 
@@ -57,4 +58,7 @@ test("keeps public company content in source files", async () => {
   assert.match(layout, /title:\s*"KDK Consulting AB"/);
   assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
   assert.doesNotMatch(css, /letter-spacing:\s*-/);
+  assert.doesNotMatch(css, /\.motion-ready\s+\.reveal[^,{]*\{\s*opacity:\s*0/);
+  assert.doesNotMatch(css, /\.motion-enhanced\s+\.reveal[^,{]*,\s*\.motion-enhanced\s+\.reveal-item\s*\{\s*opacity:\s*0/);
+  assert.match(css, /@keyframes reveal-in/);
 });

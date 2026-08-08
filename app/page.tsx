@@ -138,6 +138,7 @@ export default function Home() {
           window.addEventListener('scroll', updateNav, { passive: true });
 
           if (!reduceMotion && 'IntersectionObserver' in window) {
+            root.classList.add('motion-enhanced');
             const observer = new IntersectionObserver((entries, currentObserver) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
