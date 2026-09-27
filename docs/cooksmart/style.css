@@ -153,33 +153,24 @@ a:focus-visible { outline: 3px solid #a46d36; outline-offset: 5px; }
 .proof-grid a, footer a { text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
 
-/* Short, user-controlled product walkthrough. */
-.demo-player { min-width: 0; }
-.demo-phone { height: 620px; min-height: 620px; overflow: hidden; }
-.demo-phone .phone-top { margin-bottom: 26px; }
+
+/* Compact slideshow of actual app screenshots. */
+.demo-section { grid-template-columns: minmax(0,1fr) minmax(260px,340px); gap: 56px; padding-top: 64px; padding-bottom: 64px; }
+.demo-copy h2 { font-size: clamp(32px,3.2vw,44px); }
+.demo-player { min-width: 0; max-width: 340px; width: 100%; justify-self: center; }
+.real-app-demo { border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 12px 32px #17211d14; background: #fbfaf7; }
+.demo-scene { animation: demo-enter .25s ease both; width: 100%; }
 .demo-scene[hidden], .demo-controls[hidden] { display: none; }
-.demo-scene { animation: demo-enter .4s ease both; }
-.demo-scene h3 { font-size: 26px; line-height: 1.1; margin-bottom: 20px; }
-.demo-photo { height: 290px; border-radius: 18px; overflow: hidden; position: relative; }
-.demo-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
-.demo-scan { position: absolute; left: 0; right: 0; top: 20%; height: 3px; background: #dce8ce; box-shadow: 0 0 22px 8px #dce8ce88; opacity: 0; }
-.demo-player.is-playing .demo-scan { opacity: 1; animation: demo-scan 3.5s ease-in-out infinite alternate; }
-.demo-action { background: var(--green); color: white; border-radius: 12px; text-align: center; padding: 14px 8px; margin-top: 18px; font-weight: 700; }
-.demo-hint { color: #53615a; font-size: 14px; line-height: 1.5; margin: 16px 0 0; }
-.demo-ingredients { list-style: none; padding: 0; margin: 0; }
-.demo-ingredients li { background: white; border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; }
-.demo-ingredients span { color: #718078; }
-.demo-edit { border: 1px dashed #718078; border-radius: 9px; padding: 12px; font-size: 14px; }
-.demo-controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 24px; }
+.demo-scene img { display: block; width: 100%; max-width: 240px; height: auto; }
+.demo-controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .demo-controls button { cursor: pointer; font-family: inherit; }
-#demo-play { border: 0; min-width: 180px; min-height: 44px; }
-.demo-step-controls { display: flex; gap: 8px; }
+#demo-play { border: 0; min-width: 165px; min-height: 44px; }
+.demo-step-controls { display: flex; gap: 6px; }
 .demo-step-controls button { width: 44px; height: 44px; border-radius: 50%; background: white; border: 1px solid var(--line); color: var(--green); font-weight: 800; }
 .demo-step-controls button[aria-pressed="true"] { background: var(--green); color: white; }
 .demo-controls button:focus-visible { outline: 3px solid #a46d36; outline-offset: 3px; }
-.demo-caption { text-align: center; font-weight: 700; line-height: 1.4; margin: 18px 0 8px; }
-.demo-disclaimer { text-align: center; font-size: 12px; color: #53615a; line-height: 1.5; max-width: 390px; margin: 0 auto; }
-@keyframes demo-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes demo-scan { to { top: 85%; } }
-@media (prefers-reduced-motion: reduce) { .demo-scene, .demo-player.is-playing .demo-scan { animation: none; } .demo-scan { display: none; } }
-@media (max-width: 390px) { .demo-phone { padding: 23px 14px; } .demo-scene h3 { font-size: 24px; } }
+.demo-caption { text-align: center; font-size: 14px; font-weight: 700; line-height: 1.4; margin: 14px 0 8px; }
+.demo-disclaimer { text-align: center; font-size: 12px; color: #53615a; line-height: 1.5; margin: 0 auto; }
+@keyframes demo-enter { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 760px) { .demo-section { grid-template-columns: 1fr; gap: 28px; padding: 48px 22px; } }
+@media (prefers-reduced-motion: reduce) { .demo-scene { animation: none; } }

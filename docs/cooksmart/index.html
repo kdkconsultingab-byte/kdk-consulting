@@ -7,7 +7,7 @@
 <meta name="description" content="Turn the food you already have into simple dinner ideas with CookSmart. Learn how it works and find support and privacy information." />
 <link rel="canonical" href="https://kdkconsulting.se/cooksmart/" />
 <link rel="icon" href="/cooksmart/assets/cooksmart-icon.png" />
-<link rel="stylesheet" href="/cooksmart/style.css" />
+<link rel="stylesheet" href="/cooksmart/style.css?v=20260927-real-screens" />
 </head>
 <body>
     <main>
@@ -56,46 +56,23 @@
           <h2 id="demo-heading">See what is in your kitchen. Then decide dinner.</h2>
           <p>CookSmart turns an everyday fridge photo into an editable ingredient list and up to three practical recipe ideas.</p>
         </div>
-        <div class="demo-player" aria-label="Illustrated CookSmart walkthrough">
-          <div class="app-demo">
-            <div class="phone-card demo-phone">
-              <div class="phone-top"><span>CookSmart</span><span aria-hidden="true">•••</span></div>
-              <section class="demo-scene" data-scene="0" aria-label="Step 1: choose a food photo">
-                <p class="screen-label">1 · ADD YOUR PHOTOS</p>
-                <h3>What’s in your kitchen?</h3>
-                <div class="demo-photo"><img src="/cooksmart/assets/cooksmart-hero.png" alt="Illustration of a fridge and pantry with food" /><span class="demo-scan" aria-hidden="true"></span></div>
-                <div class="demo-action">Choose food photos</div>
-                <p class="demo-hint">Fridge, freezer or pantry</p>
-              </section>
-              <section class="demo-scene" data-scene="1" aria-label="Step 2: review ingredients" hidden>
-                <p class="screen-label">2 · REVIEW THE LIST</p>
-                <h3>We found these</h3>
-                <ul class="demo-ingredients"><li>Eggs <span aria-hidden="true">×</span></li><li>Spinach <span aria-hidden="true">×</span></li><li>Tomatoes <span aria-hidden="true">×</span></li><li>Pasta <span aria-hidden="true">×</span></li><li>Feta <span aria-hidden="true">×</span></li></ul>
-                <div class="demo-edit">＋ Add an ingredient</div>
-                <p class="demo-hint">Check the list. Add or remove anything.</p>
-                <div class="demo-action">Generate meal ideas</div>
-              </section>
-              <section class="demo-scene" data-scene="2" aria-label="Step 3: choose a recipe" hidden>
-                <p class="screen-label">3 · PICK DINNER</p>
-                <h3>Three dinner ideas</h3>
-                <div class="recipe-card"><span>20 min</span><strong>Spinach &amp; feta pasta</strong><small>With tomatoes</small></div>
-                <div class="recipe-row"><strong>Tomato frittata</strong><span>25 min</span></div>
-                <div class="recipe-row"><strong>Warm pasta salad</strong><span>20 min</span></div>
-                <p class="demo-hint">Pick a recipe to see ingredients and instructions.</p>
-              </section>
-            </div>
+        <div class="demo-player" aria-label="CookSmart app screenshots">
+          <div class="app-demo real-app-demo" style="max-width:240px;margin:0 auto;overflow:hidden;">
+            <div class="demo-scene" data-scene="0"><img src="/cooksmart/assets/app-ingredients.jpg" alt="CookSmart ingredient list with detected foods and portions for two people" width="590" height="1280" style="display:block;width:100%;max-width:240px;height:auto;" /></div>
+            <div class="demo-scene" data-scene="1" hidden><img src="/cooksmart/assets/app-edit-ingredients.jpg" alt="CookSmart add missing ingredient field and Create recipes button" width="590" height="1280" style="display:block;width:100%;max-width:240px;height:auto;" /></div>
+            <div class="demo-scene" data-scene="2" hidden><img src="/cooksmart/assets/app-recipes.jpg" alt="CookSmart showing three meal suggestions and cooking times" width="590" height="1280" style="display:block;width:100%;max-width:240px;height:auto;" /></div>
           </div>
           <div class="demo-controls" hidden>
             <button class="button button-small" type="button" id="demo-play">Play 12-second demo</button>
             <div class="demo-step-controls" role="group" aria-label="Choose demo step">
-              <button type="button" data-step="0" aria-label="Show photo step" aria-pressed="true">1</button>
-              <button type="button" data-step="1" aria-label="Show ingredient step" aria-pressed="false">2</button>
+              <button type="button" data-step="0" aria-label="Show detected ingredients" aria-pressed="true">1</button>
+              <button type="button" data-step="1" aria-label="Show ingredient editing" aria-pressed="false">2</button>
               <button type="button" data-step="2" aria-label="Show recipe step" aria-pressed="false">3</button>
             </div>
           </div>
-          <p class="demo-caption" id="demo-caption" aria-live="polite">1. Choose photos of your food.</p>
-          <p class="demo-disclaimer">Illustrated demo, not a screen recording. Example recipes; results and processing times vary.</p>
-          <noscript><p>Choose a photo, review the ingredients, then pick a recipe. Enable JavaScript to play the walkthrough.</p></noscript>
+          <p class="demo-caption" id="demo-caption" aria-live="polite">1. Review the detected ingredients.</p>
+          <p class="demo-disclaimer">Real app screenshots from separate test runs. Recipes and processing times vary.</p>
+          <noscript><p>Review the ingredients, adjust the list, then pick a recipe. Enable JavaScript to play the walkthrough.</p></noscript>
         </div>
       </section>
 
@@ -150,6 +127,6 @@
         <p>Made by <a href="/">KDK Consulting AB</a> · <a href="/cooksmart/support/">Support</a> · <a href="/cooksmart/privacy/">Privacy</a> · <a href="mailto:info@kdkconsulting.se">info@kdkconsulting.se</a></p>
       </footer>
     </main>
-<script src="/cooksmart/demo.js" defer></script>
+<script src="/cooksmart/demo.js?v=20260927-real-screens" defer></script>
 </body>
 </html>
