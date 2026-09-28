@@ -5,7 +5,7 @@
   const buttons = [...player.querySelectorAll('[data-step]')];
   const play = player.querySelector('#demo-play');
   const caption = player.querySelector('#demo-caption');
-  const captions = ['1. Review the detected ingredients.', '2. Adjust ingredients and portions.', '3. Choose from the recipe suggestions.'];
+  const captions = ['1. Add photos of your food.', '2. Review ingredients and portions.', '3. Choose from the recipe suggestions.'];
   let step = 0;
   let timer = null;
   let running = false;
